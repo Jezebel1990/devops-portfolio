@@ -1,0 +1,316 @@
+/* Reset e estilos base */
+    * {
+        box-sizing: border-box;
+    }
+
+ body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        background: #0b0b12;
+        color: #fff;
+        line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    a {
+        color: #b07bff;
+        text-decoration: none;
+    }
+
+    /* Cores principais */
+    :root {
+        --azul: #4aa8ff;
+        --lilas: #c084fc;
+        --card-bg: #11111a;
+        --borda: #1f1f2b;
+    }
+
+    /* Cabeçalho */
+    .header {
+        text-align: center;
+        padding: 80px 20px;
+        background: linear-gradient(180deg, #151521, #0b0b12);
+    }
+
+    .header h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    .highlight {
+        background: linear-gradient(90deg, var(--azul), var(--lilas));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .contact-info {
+        margin-top: 15px;
+        font-size: 1rem;
+        opacity: 0.9;
+        line-height: 1.4;
+    }
+
+    /* Container */
+    .section {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+.card {
+    background: linear-gradient(135deg, #0b0b12 0%, #131a2a 40%, #182033 70%, #0b0b12 100%);
+    border: 1px solid var(--borda);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 25px rgba(120, 89, 255, 0.10);
+    transition: 0.3s ease;
+}
+
+ .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(120, 89, 255, 0.25);
+}
+
+
+
+    .card h3 {
+        color: var(--azul);
+        margin-bottom: 8px;
+    }
+
+    .Periodo {
+        color: var(--lilas);
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+
+    /* Títulos de sessão */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: var(--lilas);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Chips */
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .skill-item {
+        background: #1a1a25;
+        border: 1px solid var(--borda);
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: var(--azul);
+    }
+
+    footer {
+        text-align: center;
+        padding: 40px 15px;
+        opacity: 0.6;
+        margin-top: 40px;
+        border-top: 1px solid #1f1f2b;
+    }
+
+    /* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(20, 20, 30, 0.7);
+    padding: 12px 0;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+.logo {
+    background: linear-gradient(90deg, #4aa8ff, #c084fc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #c084fc;
+}
+
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.title-name {
+    font-size: 2.8rem; /* mesmo valor do seu h1 */
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.card-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+ 
+   
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center; 
+    text-align: center;    
+    gap: 8px;            
+    margin-top: 20px;
+}
+
+.user-info img {
+    border-radius: 50%; 
+    width: 100px;          
+    height: 100px;
+    object-fit: cover;
+}
+
+#user-section, #projects-section {
+    padding-top: 80px;
+    text-align: center; 
+}
+
+.user-link {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  text-decoration: none; 
+  color: #fff;           
+  gap: 5px;              
+}
+
+.user-link p {
+  font-family: "Poppins", sans-serif; /* ou Roboto, Lato, Montserrat */
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  color: #fff;  
+}
+.user-link p:hover {
+  color: #abd6fe;
+  
+}
+
+
+.user-link img {
+  border-radius: 50%;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin: 20px auto 60px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 40px 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* borda discreta */
+    border-radius: 8px;
+    font-size: 16px;
+    background: transparent; /* fundo transparente */
+    color: #fff; /* texto branco */
+    outline: none;
+}
+
+/* Placeholder branco suave */
+.search-box input::placeholder {
+    color: #ccc;
+}
+
+.search-box .search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    opacity: 0.8;
+    color: #fff; /* Lupa branca */
+}
+
+.not-found {
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+    color: #ccc;
+}
+
+.contact-info i {
+    margin-right: 6px;
+     margin-left: 16px;
+    color: #4ea8ff;
+}
+
+.github-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c084fc;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.github-link:hover {
+  color: #fff;
+  transform: scale(1.1);
+}

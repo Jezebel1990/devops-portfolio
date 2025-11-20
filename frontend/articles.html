@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Artigos - Jezebel Guedes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">JG</div>
+      <ul class="nav-links">
+        <li><a href="index.html#inicio">Voltar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="user-section" class="section">
+    <h2 class="section-title">Artigos - Jezebel Guedes</h2>
+    <div id="user-info" class="user-info">
+      <p>Carregando informações...</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Publicações Recentes</h2>
+    <div id="articles" class="grid">
+      <p>Carregando artigos...</p>
+    </div>
+  </section>
+
+  <script>
+    const BACKEND_BASE = "http://localhost:4000";
+
+    // Buscar sessão pública
+    async function fetchSession() {
+      const container = document.getElementById("user-info");
+      try {
+        const res = await fetch(BACKEND_BASE + "/session");
+        const data = await res.json();
+
+        container.innerHTML = `
+          <a href="${data.info}" target="_blank" class="user-link">
+            <img src="${data.picture}" alt="Foto de perfil" width="80" height="80" />
+            <p>Vamos nos conectar no LinkedIn?</p>
+          </a>
+        `;
+      } catch (err) {
+        container.innerHTML = "<pre>Erro: " + err.message + "</pre>";
+      }
+    }
+
+    // Formatador de data (padrão BR)
+    function formatDate(dateStr) {
+      if (!dateStr) return "Data não informada";
+      const date = new Date(dateStr);
+      if (isNaN(date)) return "Data inválida";
+      return date.toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
+    }
+
+    // Busca artigos manualmente
+    async function fetchPosts() {
+      const container = document.getElementById("articles");
+      container.innerHTML = "<p>Carregando artigos...</p>";
+
+      try {
+        const res = await fetch(BACKEND_BASE + "/api/linkedin/posts");
+        const data = await res.json();
+        let items = data.elements || [];
+
+        if (!items.length) {
+          container.innerHTML = "<p>Nenhum artigo encontrado.</p>";
+          return;
+        }
+
+        // 🔥 Ordenar do mais recente para o mais antigo
+        items.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        container.innerHTML = "";
+
+        items.forEach(item => {
+          const card = document.createElement("a");
+          card.className = "card-link";
+          card.href = item.link;
+          card.target = "_blank";
+
+          card.innerHTML = `
+            <div class="card">
+              ${item.image ? `<img src="${item.image}" alt="${item.title}" class="card-image" />` : ""}
+              
+              <small class="post-date">
+                📅 ${formatDate(item.date)}
+              </small>
+
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.innerHTML = "<pre>Erro: " + err.message + "</pre>";
+      }
+    }
+
+    // Inicializa a página
+    fetchSession();
+    fetchPosts();
+  </script>
+
+  <div id="footer"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
