@@ -6,7 +6,9 @@ const githubRoutes = require("./github");
 const linkedinRoutes = require("./linkedin");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ["https://jezebelguedes-devops.onrender.com"]
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
