@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Artigos - Jezebel Guedes</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,7 +33,10 @@
   </section>
 
   <script>
-    const BACKEND_BASE = "http://localhost:4000";
+    // Detecta ambiente: localhost para dev, URL do Render para produção
+    const BACKEND_BASE = window.location.hostname === "localhost"
+      ? "http://localhost:4000"
+      : "https://devops-portfolio-2t1i.onrender.com";
 
     // Buscar sessão pública
     async function fetchSession() {
@@ -94,7 +99,7 @@
               ${item.image ? `<img src="${item.image}" alt="${item.title}" class="card-image" />` : ""}
               
               <small class="post-date">
-                📅 ${formatDate(item.date)}
+                <i class="fa-solid fa-calendar-days"></i> ${formatDate(item.date)}
               </small>
 
               <h3>${item.title}</h3>
