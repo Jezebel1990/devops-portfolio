@@ -10,6 +10,7 @@ const selectedNames = [
   "container-cluster-aws",
   "my_hugo_site",
   "banking-functions-python",
+  "terraform-aws-ec2",
 ];
 
 router.get("/", async (req, res) => {
