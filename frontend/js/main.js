@@ -36,3 +36,12 @@ function loadFooter() {
 
 // Executa o carregamento do footer
 loadFooter();
+
+
+// Menu hamburguer
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});

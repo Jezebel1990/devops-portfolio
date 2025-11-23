@@ -4,17 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Artigos - Jezebel Guedes</title>
-    <!-- Font Awesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <nav class="navbar">
     <div class="nav-container">
+
       <div class="logo">JG</div>
-      <ul class="nav-links">
-        <li><a href="index.html#inicio">Voltar</a></li>
-      </ul>
+
+      <!-- Botão Voltar FORA do .nav-links -->
+      <a href="index.html#inicio" class="back-text">Voltar</a>
+      <a href="index.html#inicio" class="back-icon">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
     </div>
   </nav>
 
@@ -68,7 +74,7 @@
       });
     }
 
-    // Busca artigos manualmente
+    // Busca artigos
     async function fetchPosts() {
       const container = document.getElementById("articles");
       container.innerHTML = "<p>Carregando artigos...</p>";
@@ -83,7 +89,7 @@
           return;
         }
 
-        // 🔥 Ordenar do mais recente para o mais antigo
+        // Ordenar do mais recente ao mais antigo
         items.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         container.innerHTML = "";
@@ -97,7 +103,7 @@
           card.innerHTML = `
             <div class="card">
               ${item.image ? `<img src="${item.image}" alt="${item.title}" class="card-image" />` : ""}
-              
+
               <small class="post-date">
                 <i class="fa-solid fa-calendar-days"></i> ${formatDate(item.date)}
               </small>
@@ -121,5 +127,6 @@
 
   <div id="footer"></div>
   <script src="js/main.js"></script>
+
 </body>
 </html>

@@ -131,51 +131,7 @@
         border-top: 1px solid #1f1f2b;
     }
 
-    /* NAVBAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    background: rgba(20, 20, 30, 0.7);
-    padding: 12px 0;
-}
-
-.nav-container {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 25px;
-}
-
-.logo {
-    background: linear-gradient(90deg, #4aa8ff, #c084fc);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 22px;
-}
-
-.nav-links a {
-    color: #ccc;
-    text-decoration: none;
-    transition: .3s;
-}
-
-.nav-links a:hover {
-    color: #c084fc;
-}
-
-
+ 
 /* GRID */
 .grid {
     display: grid;
@@ -313,4 +269,225 @@
 .github-link:hover {
   color: #fff;
   transform: scale(1.1);
+}
+
+.github-link i {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+/* ================================
+   NAVBAR PRINCIPAL
+================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(20, 20, 30, 0.7);
+    padding: 12px 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+/* Logo */
+.logo {
+    background: linear-gradient(90deg, #4aa8ff, #c084fc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #c084fc;
+}
+
+/* ================================
+   MENU HAMBÚRGUER (DESKTOP ESCONDE)
+================================ */
+.menu-btn {
+    display: none; /* esconde em telas grandes */
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================ */
+@media (max-width: 768px) {
+
+    /* Mostra o botão no mobile */
+    .menu-btn {
+        display: block;
+    }
+
+    /* Esconde os links por padrão */
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(20, 20, 30, 0.9);
+        backdrop-filter: blur(10px);
+        width: 200px;
+        padding: 20px;
+        flex-direction: column;
+        gap: 18px;
+        display: none; /* escondido antes de clicar */
+        border-left: 1px solid #444;
+        border-bottom: 1px solid #444;
+    }
+
+    /* Mostrar quando ativo */
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+
+/* ================================
+   NAVBAR SECUNDÁRIA (BOTÃO VOLTAR)
+================================ */
+
+/* Texto "Voltar" aparece apenas em telas grandes */
+.back-text {
+    display: inline;
+    color: #ccc;
+}
+
+.back-text:hover {
+    color: #c084fc;
+}
+
+/* Ícone aparece só no mobile */
+.back-icon {
+    display: none;
+    font-size: 1.3rem;
+    color: #fff !important;
+}
+
+/* Mobile: troca texto pelo ícone */
+@media (max-width: 768px) {
+
+    .back-text {
+        display: none;
+    }
+
+    .back-icon {
+        display: inline !important;
+    }
+}
+
+/* ================================
+   ANIMAÇÃO PARA h1, h2, h3
+================================ */
+
+/* Estilo base */
+h1, h2, h3 {
+    transition: 
+        color 0.4s ease,
+        transform 0.3s ease,
+        text-shadow 0.4s ease;
+    cursor: default;
+}
+
+/* Efeito ao passar o mouse */
+h1:hover, h2:hover, h3:hover {
+    color: transparent;
+    background: linear-gradient(90deg, var(--azul), var(--lilas), #ff9cff);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transform: scale(1.03);
+    text-shadow: 0 0 18px rgba(192, 132, 252, 0.35);
+    animation: shine 2s linear infinite;
+}
+
+/* Animação do gradiente */
+@keyframes shine {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
+}
+
+/* ======================================================
+   ANIMAÇÃO PARA SKILL-ITEMS (CADA UMA COM COR DIFERENTE)
+====================================================== */
+
+.skill-item {
+    position: relative;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: default;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Efeito ao passar o mouse */
+.skill-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 18px currentColor;
+}
+
+/* CORES INDIVIDUAIS — uma paleta vibrante e tecnológica */
+.skill-item:nth-child(1)  { color: #4aa8ff; }   /* DevOps */
+.skill-item:nth-child(2)  { color: #c084fc; }   /* SRE */
+.skill-item:nth-child(3)  { color: #ff9cff; }   /* Shell Script */
+.skill-item:nth-child(4)  { color: #66ffda; }   /* Linux */
+.skill-item:nth-child(5)  { color: #ffcc66; }   /* Docker */
+.skill-item:nth-child(6)  { color: #8aff7a; }   /* Kubernetes */
+.skill-item:nth-child(7)  { color: #ffaa88; }   /* CI/CD */
+.skill-item:nth-child(8)  { color: #ff6b6b; }   /* GitHub Actions */
+.skill-item:nth-child(9)  { color: #ffb347; }   /* AWS */
+.skill-item:nth-child(10) { color: #7ed6ff; }   /* AZURE */
+.skill-item:nth-child(11) { color: #00e6a8; }   /* GCP */
+.skill-item:nth-child(12) { color: #ff7fff; }   /* Terraform */
+.skill-item:nth-child(13) { color: #89e88c; }   /* Python */
+.skill-item:nth-child(14) { color: #ffb86c; }   /* Node.js */
+.skill-item:nth-child(15) { color: #80aaff; }   /* React.js */
+.skill-item:nth-child(16) { color: #ffd86b; }   /* SQL */
+.skill-item:nth-child(17) { color: #c799ff; }   /* NoSQL */
+.skill-item:nth-child(18) { color: #ffaedb; }   /* Logging */
+.skill-item:nth-child(19) { color: #91ff9a; }   /* Monitoramento */
+.skill-item:nth-child(20) { color: #ff8a6f; }   /* Troubleshooting */
+
+/* Brilho animado sutil em loop */
+.skill-item {
+    animation: glowPulse 4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.15s); /* cada chip começa em tempo diferente */
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 0 currentColor);
+    }
+    50% {
+        filter: drop-shadow(0 0 8px currentColor);
+    }
 }
